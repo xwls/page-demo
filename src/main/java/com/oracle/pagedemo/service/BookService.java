@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 public interface BookService {
-    Integer PAGE_SIZE = 4;
+    Integer PAGE_SIZE = 2;
 
     List<Book> list();
 
