@@ -17,12 +17,12 @@ public interface BookMapper {
      * @param param LIMIT limit,offset ,需要包含limit和offset
      * @return 当前页的数据
      */
-    List<Book> queryPage(Map<String,Object> param);
+//    List<Book> queryPage(Map<String,Object> param);
 
     /**
      * 获取总数量
      * @return 一共有多少条数据
      */
-    Integer count();
+//    Integer count();
 
 }

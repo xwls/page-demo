@@ -9,3 +9,11 @@ mybatis:
   type-aliases-package: com.oracle.pagedemo.entity
   configuration:
     map-underscore-to-camel-case: true
+pagehelper:
+  helper-dialect: mysql
+logging:
+  level:
+    com:
+      oracle:
+        pagedemo:
+          mapper: debug

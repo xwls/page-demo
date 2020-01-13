@@ -23,10 +23,8 @@ public class BookController {
         Map<String, Object> map = bookService.listPage(page, BookService.PAGE_SIZE);
         model.addAttribute("books",map.get("books"));
         Object pageNum = map.get("pageNum");
-        System.out.println("pageNum = " + pageNum);
         model.addAttribute("pageNum", pageNum);
         model.addAttribute("page",page);
-        System.out.println("page = " + page);
         return "books";
     }
 

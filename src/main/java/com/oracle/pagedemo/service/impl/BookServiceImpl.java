@@ -1,5 +1,7 @@
 package com.oracle.pagedemo.service.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.oracle.pagedemo.entity.Book;
 import com.oracle.pagedemo.mapper.BookMapper;
 import com.oracle.pagedemo.service.BookService;
@@ -24,14 +26,12 @@ public class BookServiceImpl implements BookService {
     @Override
     public Map<String,Object> listPage(Integer page, Integer pageSize) {
         Map<String,Object> param = new HashMap<>();
-        param.put("limit",(page - 1) * pageSize);
-        param.put("offset",pageSize);
-        //当前页的数据
-        List<Book> books = bookMapper.queryPage(param);
-        Integer count = bookMapper.count();
-        double pageNum = Math.ceil(Double.valueOf(count) / PAGE_SIZE);
-        param.put("books",books);
-        param.put("pageNum",pageNum);
+        //开始分页
+        PageHelper.startPage(page,PAGE_SIZE);
+        List<Book> books = bookMapper.queryAll();
+        PageInfo<Book> pageInfo = new PageInfo<>(books);
+        param.put("books",pageInfo.getList());
+        param.put("pageNum",pageInfo.getPages());
         return param;
     }
 }

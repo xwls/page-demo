@@ -12,12 +12,12 @@
         SELECT * FROM book WHERE book_id = #{bookId}
     </select>
 
-    <select id="queryPage" parameterType="map" resultType="book">
+    <!--<select id="queryPage" parameterType="map" resultType="book">
         SELECT * FROM book LIMIT #{limit},#{offset}
     </select>
 
     <select id="count" resultType="int">
         SELECT COUNT(book_id) count FROM book
-    </select>
+    </select>-->
 
 </mapper>
