@@ -19,4 +19,10 @@ public interface BookMapper {
      */
     List<Book> queryPage(Map<String,Object> param);
 
+    /**
+     * 获取总数量
+     * @return 一共有多少条数据
+     */
+    Integer count();
+
 }

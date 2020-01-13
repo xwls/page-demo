@@ -16,4 +16,8 @@
         SELECT * FROM book LIMIT #{limit},#{offset}
     </select>
 
+    <select id="count" resultType="int">
+        SELECT COUNT(book_id) count FROM book
+    </select>
+
 </mapper>

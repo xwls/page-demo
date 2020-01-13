@@ -9,18 +9,24 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class BookController {
 
     @Autowired
     private BookService bookService;
-    private static final Integer PAGE_SIZE = 4;
+
 
     @GetMapping("/books")
     public String books(@RequestParam(required = false,defaultValue = "1") Integer page, Model model){
-        List<Book> books = bookService.listPage(page, PAGE_SIZE);
-        model.addAttribute("books",books);
+        Map<String, Object> map = bookService.listPage(page, BookService.PAGE_SIZE);
+        model.addAttribute("books",map.get("books"));
+        Object pageNum = map.get("pageNum");
+        System.out.println("pageNum = " + pageNum);
+        model.addAttribute("pageNum", pageNum);
+        model.addAttribute("page",page);
+        System.out.println("page = " + page);
         return "books";
     }
 

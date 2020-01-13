@@ -3,8 +3,10 @@ package com.oracle.pagedemo.service;
 import com.oracle.pagedemo.entity.Book;
 
 import java.util.List;
+import java.util.Map;
 
 public interface BookService {
+    Integer PAGE_SIZE = 4;
 
     List<Book> list();
 
@@ -14,6 +16,6 @@ public interface BookService {
      * @param pageSize 每页条数
      * @return 当前页的数据
      */
-    List<Book> listPage(Integer page, Integer pageSize);
+    Map<String,Object> listPage(Integer page, Integer pageSize);
 
 }

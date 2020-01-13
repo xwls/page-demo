@@ -22,10 +22,16 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public List<Book> listPage(Integer page, Integer pageSize) {
+    public Map<String,Object> listPage(Integer page, Integer pageSize) {
         Map<String,Object> param = new HashMap<>();
         param.put("limit",(page - 1) * pageSize);
         param.put("offset",pageSize);
-        return bookMapper.queryPage(param);
+        //当前页的数据
+        List<Book> books = bookMapper.queryPage(param);
+        Integer count = bookMapper.count();
+        double pageNum = Math.ceil(Double.valueOf(count) / PAGE_SIZE);
+        param.put("books",books);
+        param.put("pageNum",pageNum);
+        return param;
     }
 }
